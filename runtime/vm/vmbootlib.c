@@ -528,7 +528,7 @@ classLoaderRegisterLibrary(void *voidVMThread, J9ClassLoader *classLoader, const
 	 */
 	if (NULL == classLoader->sharedLibraries) {
 		classLoader->sharedLibraries = pool_new(sizeof(J9NativeLibrary),  0, 0, 0, J9_GET_CALLSITE(), J9MEM_CATEGORY_CLASSES,
-			(j9memAlloc_fptr_t)pool_portLibAlloc, (j9memFree_fptr_t)pool_portLibFree, PORTLIB);
+			(j9memAlloc_fptr_t)pool_portLibAlloc, (j9memFree_fptr_t)pool_portLibFree, OMRPORT_FROM_J9PORT(PORTLIB));
 	}
 
 	if (NULL != classLoader->sharedLibraries) {

@@ -2171,7 +2171,7 @@ ensureJNIIDTable(J9VMThread *currentThread, J9Class* clazz)
 	/* First ensure that the ID pool in the class loader exists */
 
 	if (classLoader->jniIDs == NULL) {
-		J9Pool * idPool = pool_new(sizeof(J9GenericJNIID),  16, 0, 0, J9_GET_CALLSITE(), J9MEM_CATEGORY_JNI, (j9memAlloc_fptr_t)pool_portLibAlloc, (j9memFree_fptr_t)pool_portLibFree, PORTLIB);
+		J9Pool * idPool = pool_new(sizeof(J9GenericJNIID),  16, 0, 0, J9_GET_CALLSITE(), J9MEM_CATEGORY_JNI, (j9memAlloc_fptr_t)pool_portLibAlloc, (j9memFree_fptr_t)pool_portLibFree, OMRPORT_FROM_J9PORT(PORTLIB));
 
 		if (idPool == NULL) {
 			return NULL;
